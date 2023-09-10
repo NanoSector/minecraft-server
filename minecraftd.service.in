@@ -9,5 +9,26 @@ ExecStop=/usr/bin/@INAME@ stop
 User=@GAME_USER@
 Group=@GAME_USER@
 
+# Security hardening & sandboxing, see `systemd-analyze security [unit file]`
+CapabilityBoundingSet=
+LockPersonality=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateUsers=true
+PrivateTmp=true
+ProcSubset=pid
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+SystemCallFilter=~@clock @cpu-emulation @debug @module @mount @obsolete @privileged @raw-io @reboot @resources @swap
+
 [Install]
 WantedBy=multi-user.target
